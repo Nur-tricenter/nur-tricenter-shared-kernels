@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="nur-tricenter-access/nur-tricenter-access.csproj" />
+  <Project Path="nur-tricenter-integration/nur-tricenter-integration.csproj" />
+  <Project Path="nur-tricenter-observability/nur-tricenter-observability.csproj" />
+  <Project Path="nur-tricenter-security/nur-tricenter-security.csproj" />
+</Solution>

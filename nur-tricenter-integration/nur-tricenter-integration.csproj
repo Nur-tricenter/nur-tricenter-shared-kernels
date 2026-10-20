@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Nur.Tricenter.Integration</RootNamespace>
+    <AssemblyName>Nur.Tricenter.Integration</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      Base type for every cross-service message. It carries no transport logic: the reference
+      architecture states that explicitly, and keeping the dependency one-way means a service can
+      publish a contract without pulling in RabbitMQ.
+    -->
+    <PackageReference Include="Joseco.Communication.External.Contracts" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>
