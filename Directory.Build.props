@@ -20,15 +20,36 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
+    <!--
+      The package id must be stated, not inherited. Without it NuGet derives PackageId from the
+      project file name, which is the FOLDER name (nur-tricenter-access), and the published
+      package is then registered under a dashed id that no consumer asked for. Declaring it here
+      makes the id a deliberate choice rather than a side effect of a directory name.
+    -->
+    <PackageId Condition="'$(MSBuildProjectName)' == 'nur-tricenter-access'">Nur.Tricenter.Access</PackageId>
+    <PackageId Condition="'$(MSBuildProjectName)' == 'nur-tricenter-integration'">Nur.Tricenter.Integration</PackageId>
+    <PackageId Condition="'$(MSBuildProjectName)' == 'nur-tricenter-observability'">Nur.Tricenter.Observability</PackageId>
+    <PackageId Condition="'$(MSBuildProjectName)' == 'nur-tricenter-security'">Nur.Tricenter.Security</PackageId>
+
     <!-- Packaging. One version for all four, decided once here. -->
     <IsPackable>true</IsPackable>
-    <Version>1.0.0</Version>
+    <Version>1.0.4</Version>
     <Authors>Nur-Tricenter</Authors>
     <Company>Nur-Tricenter</Company>
     <Product>Nur-Tricenter Platform Kernels</Product>
     <Copyright>Copyright (c) Nur-Tricenter</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>nur-tricenter;shared-kernel;microservices;ddd;cqrs;observability</PackageTags>
+
+    <!--
+      GitHub Packages links a package to its repository from this field. Without it the package is
+      published UNLINKED, and an unlinked package cannot be restored by a consumer — the feed
+      reports it as missing no matter how correct the PackageReference is.
+
+      OWNER must be the namespace used in the push (Nur-tricenter), or the link silently fails.
+    -->
+    <RepositoryUrl>https://github.com/Nur-tricenter/nur-tricenter-shared-kernels</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
 
     <!--
       Symbols make a stack trace in a consumer's log readable. Without this, the shipped package
