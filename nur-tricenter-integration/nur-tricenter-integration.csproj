@@ -14,7 +14,7 @@
       architecture states that explicitly, and keeping the dependency one-way means a service can
       publish a contract without pulling in RabbitMQ.
     -->
-    <PackageReference Include="Joseco.Communication.External.Contracts" Version="1.0.1" />
+    <PackageReference Include="Joseco.Communication.External.Contracts" />
   </ItemGroup>
 
 </Project>

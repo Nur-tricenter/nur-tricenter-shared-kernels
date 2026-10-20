@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/tests/">
+    <Project Path="tests/SharedKernels.Tests/SharedKernels.Tests.csproj" />
+  </Folder>
   <Project Path="nur-tricenter-access/nur-tricenter-access.csproj" />
   <Project Path="nur-tricenter-integration/nur-tricenter-integration.csproj" />
   <Project Path="nur-tricenter-observability/nur-tricenter-observability.csproj" />
