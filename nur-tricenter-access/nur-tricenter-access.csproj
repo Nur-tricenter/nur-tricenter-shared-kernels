@@ -1,11 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <RootNamespace>Nur.Tricenter.Access</RootNamespace>
-    <AssemblyName>Nur.Tricenter.Access</AssemblyName>
-  </PropertyGroup>
+  <!--
+    TFM, versioning and packaging metadata come from Directory.Build.props one level up, so all
+    four kernels ship the same version and target the same runtime.
+  -->
 
 </Project>

@@ -1,0 +1,46 @@
+<Project>
+
+  <!--
+    Shared packaging for the four kernels.
+
+    These libraries ship as NuGet packages, not as project references across repositories. That
+    is what makes each repository independent: a service declares
+
+        <PackageReference Include="Nur.Tricenter.Access" Version="1.0.0" />
+
+    and `dotnet restore` resolves it from a feed. Nothing references a sibling folder, so a
+    checkout of one repository builds on its own, and so does its Docker image.
+
+    The alternative — copying the kernels into each service — was rejected because it duplicates
+    the code in N places and drifts silently: nobody remembers to copy the fix.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!-- Packaging. One version for all four, decided once here. -->
+    <IsPackable>true</IsPackable>
+    <Version>1.0.0</Version>
+    <Authors>Nur-Tricenter</Authors>
+    <Company>Nur-Tricenter</Company>
+    <Product>Nur-Tricenter Platform Kernels</Product>
+    <Copyright>Copyright (c) Nur-Tricenter</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>nur-tricenter;shared-kernel;microservices;ddd;cqrs;observability</PackageTags>
+
+    <!--
+      Symbols make a stack trace in a consumer's log readable. Without this, the shipped package
+      has no .pdb and every frame points at an offset.
+    -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="\" Visible="false" />
+  </ItemGroup>
+
+</Project>

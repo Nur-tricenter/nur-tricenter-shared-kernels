@@ -1,14 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <RootNamespace>Nur.Tricenter.Integration</RootNamespace>
-    <AssemblyName>Nur.Tricenter.Integration</AssemblyName>
-  </PropertyGroup>
-
-  <ItemGroup>
+<ItemGroup>
     <!--
       Base type for every cross-service message. It carries no transport logic: the reference
       architecture states that explicitly, and keeping the dependency one-way means a service can
