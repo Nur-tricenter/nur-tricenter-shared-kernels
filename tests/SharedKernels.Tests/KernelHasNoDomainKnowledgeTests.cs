@@ -110,7 +110,7 @@ public class KernelHasNoDomainKnowledgeTests
     [Fact]
     public void ObservabilityCollectsTheStorePrefix()
     {
-        // The reference architecture's sharpest rule: a meter outside the collected list is not
+        // The sharpest rule in this kernel: a meter outside the collected list is not
         // reported as broken, it is simply never exported. The wildcard is what makes a business
         // meter visible, so losing it is a silent failure, not a compile error.
         var meters = Nur.Tricenter.Observability.Tracing.ObservabilityExtensions.Meters;

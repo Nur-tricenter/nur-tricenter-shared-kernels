@@ -1,9 +1,8 @@
 namespace Nur.Tricenter.Observability.Config;
 
 /// <summary>
-/// Where traces go. The reference architecture misspells this type as <c>JeagerSettings</c>;
-/// here it is spelled correctly, and the JSON section it binds to is <see cref="SectionName"/>
-/// so the configuration key is unchanged.
+/// Where traces go. The JSON section it binds to is <see cref="SectionName"/>, so the
+/// configuration key is <c>JaegerSettings</c>.
 /// </summary>
 public class JaegerSettings
 {

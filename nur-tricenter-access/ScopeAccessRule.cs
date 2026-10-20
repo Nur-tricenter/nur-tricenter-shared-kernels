@@ -2,8 +2,8 @@ namespace Nur.Tricenter.Access;
 
 /// <summary>
 /// One authorization rule for one route: which scope a caller must carry to reach it.
-/// Mirrors the reference architecture's <c>ScopeAccessRule</c> so a microservice declares its
-/// own permissions in a form the gateway can aggregate without knowing anything about the domain.
+/// A microservice declares its own permissions in a form the gateway can aggregate without knowing
+/// anything about the domain.
 /// </summary>
 public class ScopeAccessRule
 {
