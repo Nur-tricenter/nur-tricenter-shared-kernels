@@ -39,3 +39,30 @@ public static class IdentityPermission
         RoleRead, RoleCreate, RoleEdit, RoleManage
     };
 }
+
+/// <summary>
+/// The identity service's routes and the scope each one requires.
+/// </summary>
+/// <remarks>
+/// Beside <see cref="IdentityPermission"/> for the same reason as the catalog's: a permission and
+/// the route it guards are one decision.
+/// <para>
+/// The two login-adjacent routes are marked <c>AllowAnonymous</c>, and that is a real decision
+/// rather than an oversight — you cannot present a scope you are trying to obtain. User creation
+/// is anonymous here too, matching the reference architecture, and it is the one entry in this
+/// table worth a second look: an open registration endpoint is a product decision about who may
+/// create an account, not a technical detail.
+/// </para>
+/// </remarks>
+public static class IdentityRoutes
+{
+    private const string Base = "/api/identity";
+
+    /// <summary>Every route identity exposes, with the scope a caller must present.</summary>
+    public static IReadOnlyList<ScopeAccessRule> Routes { get; } = new[]
+    {
+        new ScopeAccessRule { RouteTemplate = $"{Base}/auth/login", HttpMethod = "POST", AllowAnonymous = true },
+        new ScopeAccessRule { RouteTemplate = $"{Base}/users", HttpMethod = "POST", RequiredScope = IdentityPermission.Create },
+        new ScopeAccessRule { RouteTemplate = $"{Base}/users", HttpMethod = "GET", RequiredScope = IdentityPermission.Read }
+    };
+}

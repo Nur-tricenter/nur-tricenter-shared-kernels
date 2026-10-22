@@ -59,6 +59,28 @@ public static class Permission
 }
 
 /// <summary>
+/// Every route on the platform, with the scope each one requires.
+/// </summary>
+/// <remarks>
+/// The route-side twin of <see cref="Permission"/>, collected per service the same way. This is
+/// what the reference architecture's gateway reads to build its routing table.
+/// <para>
+/// Our gateway does not consume it yet — it discovers routes from Consul instead. So this is the
+/// declaration of what each endpoint requires, kept beside the permissions it references so the
+/// two cannot drift.
+/// </para>
+/// </remarks>
+public static class Routes
+{
+    /// <summary>Every route across every service, in registry order.</summary>
+    public static IReadOnlyList<ScopeAccessRule> RouteList { get; } = new[]
+    {
+        Catalog.CatalogRoutes.Routes,
+        Identity.IdentityRoutes.Routes
+    }.SelectMany(routes => routes).ToArray();
+}
+
+/// <summary>
 /// Every scope that grants administrative authority over the whole platform.
 /// </summary>
 /// <remarks>
