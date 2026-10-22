@@ -8,3 +8,7 @@ artifacts/
 TestResults/
 coverage/
 *.log
+
+## Local publish output (dotnet pack). The packages are pushed to GitHub Packages;
+## the .nupkg files themselves are build artifacts and must not be committed.
+artifacts-publish/
