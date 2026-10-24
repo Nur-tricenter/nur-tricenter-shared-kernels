@@ -33,7 +33,7 @@
 
     <!-- Packaging. One version for all four, decided once here. -->
     <IsPackable>true</IsPackable>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <Authors>Nur-Tricenter</Authors>
     <Company>Nur-Tricenter</Company>
     <Product>Nur-Tricenter Platform Kernels</Product>
