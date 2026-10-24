@@ -54,7 +54,13 @@ public static class Permission
         Catalog.CatalogPermission.MealPlanRead,
         Catalog.CatalogPermission.MealPlanCreate,
         Catalog.CatalogPermission.MealPlanEdit,
-        Catalog.CatalogPermission.MealPlanManage
+        Catalog.CatalogPermission.MealPlanManage,
+        DeliveryCalendar.DeliveryCalendarPermission.CalendarRead,
+        DeliveryCalendar.DeliveryCalendarPermission.CalendarCreate,
+        DeliveryCalendar.DeliveryCalendarPermission.CalendarEdit,
+        DeliveryCalendar.DeliveryCalendarPermission.ProductionOrderRead,
+        DeliveryCalendar.DeliveryCalendarPermission.DeliveryResultEdit,
+        DeliveryCalendar.DeliveryCalendarPermission.CatalogResolutionManage
     };
 }
 
@@ -76,7 +82,8 @@ public static class Routes
     public static IReadOnlyList<ScopeAccessRule> RouteList { get; } = new[]
     {
         Catalog.CatalogRoutes.Routes,
-        Identity.IdentityRoutes.Routes
+        Identity.IdentityRoutes.Routes,
+        DeliveryCalendar.DeliveryCalendarRoutes.Routes
     }.SelectMany(routes => routes).ToArray();
 }
 
