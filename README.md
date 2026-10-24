@@ -48,6 +48,10 @@ that rule was narrowed: behaviour stays out, names come in.)
   - `Messages/Catalog/`: `FoodPublished`, `FoodNutritionalInfoUpdated`, `RecipePublished`, `RecipeUpdated`,
     `MealPlanPublished`.
   - `Messages/Identity/`: `UserPublished`, `UserChanged`.
+  - `Messages/Logistics/` (ms5, logistics and delivery): `CourierCreated`, `CourierStatusChanged`,
+    `RouteCreated`, `CourierAssignedToRoute`, `DeliveryAddedToRoute`, `RouteStarted`,
+    `RouteCompleted`, `RouteCancelled`, `DeliveryCompleted`, `DeliveryFailed`. Each one is published
+    to its own fanout exchange named in kebab case (`courier-created`, `delivery-failed`, ...).
 - Publisher and consumer compile against the **same** type. Changing a contract is one commit in this
   repository and every consumer picks it up on its next restore. Duplicated contracts drift silently
   (a publisher adding a field would have the consumer's copy silently drop it, with no error anywhere).
@@ -141,6 +145,7 @@ build time instead of at run time.
 
 - `ms2-plans-and-recipes-catalog` — Access, Integration (Catalog messages), Observability, Security.
 - `nur-tricenter-identity` — Access, Integration (Identity messages), Observability, Security.
+- `nurtricenter-logistics-and-delivery` (ms5) — Integration (Logistics messages), from 1.0.10.
 
 Gateway and orchestrator do not consume the kernels (gateway auth is deferred; orchestrator is compose
 only).

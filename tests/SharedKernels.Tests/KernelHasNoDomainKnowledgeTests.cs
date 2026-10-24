@@ -246,6 +246,7 @@ public class KernelHasNoDomainKnowledgeTests
 
         Assert.Contains("Identity", services);
         Assert.Contains("Catalog", services);
+        Assert.Contains("Logistics", services);
     }
 
     [Fact]
