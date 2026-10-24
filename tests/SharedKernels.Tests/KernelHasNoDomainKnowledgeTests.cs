@@ -54,7 +54,9 @@ public class KernelHasNoDomainKnowledgeTests
     /// </summary>
     private static readonly string[] AllowedVocabulary =
     [
-        "CatalogPermission", "CatalogRoutes", "IdentityPermission", "IdentityRoutes", "Permission", "PlatformPermissions", "Routes"
+        "CatalogPermission", "CatalogRoutes", "IdentityPermission", "IdentityRoutes",
+        "DeliveryCalendarPermission", "DeliveryCalendarRoutes",
+        "Permission", "PlatformPermissions", "Routes"
     ];
 
     private static IEnumerable<Assembly> KernelAssemblies()
@@ -172,6 +174,7 @@ public class KernelHasNoDomainKnowledgeTests
         Assert.Equal(Permission.PermissionsList.Count, expanded.Count);
         Assert.Contains(Nur.Tricenter.Access.Catalog.CatalogPermission.MealPlanCreate, expanded);
         Assert.Contains(Nur.Tricenter.Access.Identity.IdentityPermission.Manage, expanded);
+        Assert.Contains(Nur.Tricenter.Access.DeliveryCalendar.DeliveryCalendarPermission.CalendarCreate, expanded);
     }
 
     [Fact]
