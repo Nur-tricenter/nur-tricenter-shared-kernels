@@ -68,6 +68,10 @@ public record CourierAssignedToRoute : IntegrationMessageContract
 /// <summary>
 /// Announces that a delivery was added to a route. Published to <c>delivery-added-to-route</c>.
 /// </summary>
+/// <remarks>
+/// <see cref="DeliveryDayId"/> is the MS4 delivery day the package was produced for (from
+/// <c>PackageValidated</c>); <c>null</c> when the package matched no calendar or was loaded by hand.
+/// </remarks>
 public record DeliveryAddedToRoute : IntegrationMessageContract
 {
     /// <summary>Required by the Newtonsoft deserializer used by the RabbitMQ library.</summary>
@@ -98,6 +102,8 @@ public record DeliveryAddedToRoute : IntegrationMessageContract
     public string PackageId { get; init; }
 
     public string PatientId { get; init; }
+
+    public int? DeliveryDayId { get; init; }
 }
 
 /// <summary>
