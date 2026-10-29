@@ -20,6 +20,11 @@ namespace Nur.Tricenter.Integration.Messages.Contracting;
 /// <see cref="PatientName"/> comes from the label so the consumer can show it to the courier without
 /// calling the clinic service at read time.
 /// </para>
+/// <para>
+/// <see cref="DeliveryDayId"/> is the MS4 delivery day (<c>packId</c>) of the matched calendar, and
+/// is <c>null</c> like the coordinates when no calendar matches. The consumer forwards it in
+/// <c>DeliveryAddedToRoute</c> so MS4 can link the delivery to that day.
+/// </para>
 /// </remarks>
 public record PackageValidated : IntegrationMessageContract
 {
@@ -66,4 +71,6 @@ public record PackageValidated : IntegrationMessageContract
     public double? Latitude { get; init; }
 
     public double? Longitude { get; init; }
+
+    public int? DeliveryDayId { get; init; }
 }
