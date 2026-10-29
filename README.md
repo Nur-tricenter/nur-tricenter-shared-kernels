@@ -52,7 +52,8 @@ that rule was narrowed: behaviour stays out, names come in.)
     `RouteCreated`, `CourierAssignedToRoute`, `DeliveryAddedToRoute`, `RouteStarted`,
     `RouteCompleted`, `RouteCancelled`, `DeliveryCompleted`, `DeliveryFailed`. Each one is published
     to its own fanout exchange named in kebab case (`courier-created`, `delivery-failed`, ...).
-  - `Messages/Contracting/` (ms3, contracting and production): `PackageValidated` (`package-validated`).
+  - `Messages/Contracting/` (ms3, contracting and production): `PackageValidated` (`package-validated`),
+    which carries the `DeliveryDate` and the label's `PatientName` since 1.3.0.
     MS3 talks to MS4 over REST (`POST /schedule`), so there is no contract for that hop.
 - Publisher and consumer compile against the **same** type. Changing a contract is one commit in this
   repository and every consumer picks it up on its next restore. Duplicated contracts drift silently
