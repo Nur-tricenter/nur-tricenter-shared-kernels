@@ -73,4 +73,7 @@ public record PackageValidated : IntegrationMessageContract
     public double? Longitude { get; init; }
 
     public int? DeliveryDayId { get; init; }
+
+    /// <summary>Contact phone of the patient for the courier. <c>null</c> when the clinic has none.</summary>
+    public string? PatientPhone { get; init; }
 }

@@ -36,6 +36,12 @@ public record DeliveryCompleted : IntegrationMessageContract
 
     /// <summary>Moment the delivery was confirmed, in UTC.</summary>
     public DateTime DeliveredAt { get; init; }
+
+    /// <summary>Reference to the proof-of-delivery photo. <c>null</c> on messages published before 1.5.0.</summary>
+    public string? EvidencePhotoUrl { get; init; }
+
+    /// <summary>Reference to the recipient's signature. <c>null</c> on messages published before 1.5.0.</summary>
+    public string? DigitalSignature { get; init; }
 }
 
 /// <summary>
