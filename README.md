@@ -46,7 +46,13 @@ that rule was narrowed: behaviour stays out, names come in.)
   reads as one operation. No transport logic.
 - Concrete contracts live under `Messages/<Service>/`:
   - `Messages/Catalog/`: `FoodPublished`, `FoodNutritionalInfoUpdated`, `RecipePublished`, `RecipeUpdated`,
-    `MealPlanPublished`.
+    `MealPlanPublished`, and since 1.6.0 `MealPlanCompositionChanged` (`meal-plan-composition-changed`),
+    the full snapshot of a plan's days, meal times and recipes that MS4 projects.
+  - `Messages/Clinic/` (ms1, clinical nutrition): `PatientPublished` (`paciente-published`), since 1.6.0.
+    A full patient snapshot (name, document, phone) that MS3 projects.
+  - `Messages/DeliveryCalendar/` (ms4, delivery calendar): `ProductionOrderReady`
+    (`production-order-ready`), since 1.6.0. The full snapshot of a delivery date's production order
+    (lines with address, coordinates and menu) that MS3 projects.
   - `Messages/Identity/`: `UserPublished`, `UserChanged`.
   - `Messages/Logistics/` (ms5, logistics and delivery): `CourierCreated`, `CourierStatusChanged`,
     `RouteCreated`, `CourierAssignedToRoute`, `DeliveryAddedToRoute`, `RouteStarted`,
@@ -57,7 +63,8 @@ that rule was narrowed: behaviour stays out, names come in.)
     `DeliveryDayId` since 1.4.0 (forwarded by ms5 in `DeliveryAddedToRoute`) and the patient's
     `PatientPhone` since 1.5.0. `DeliveryCompleted` carries the `EvidencePhotoUrl` and
     `DigitalSignature` since 1.5.0 so ms4 can record the proof of delivery.
-    MS3 talks to MS4 over REST (`POST /schedule`), so there is no contract for that hop.
+    `ContractActivated` (`contract-activated`), since 1.6.0, is how MS3 tells MS4 to create the
+    delivery calendar of a paid contract (there is no REST call between the two services).
 - Publisher and consumer compile against the **same** type. Changing a contract is one commit in this
   repository and every consumer picks it up on its next restore. Duplicated contracts drift silently
   (a publisher adding a field would have the consumer's copy silently drop it, with no error anywhere).
